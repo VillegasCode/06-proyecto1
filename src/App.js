@@ -1,3 +1,5 @@
+import { Listado } from "./components/Listado";
+
 function App() {
   return (
     <div className="layout">
@@ -20,39 +22,9 @@ function App() {
         </nav>
 
         {/*Contenido Principal*/}
-        <section className="content">
-            {/*Aqui van las películas*/}
-            <article className="peli-item">
-                <h3>Desarrollo Web Película</h3>
-                <p className="description">Película tech basada en la vida de un programador peruano</p>
-
-                <button className="edit">Editar</button>
-                <button className="delete">Borrar</button>
-            </article>
-
-            <article className="peli-item">
-                <h3>Desarrollo Web Película</h3>
-                <p className="description">Película tech basada en la vida de un programador peruano</p>
-
-                <button className="edit">Editar</button>
-                <button className="delete">Borrar</button>
-            </article>
-
-            <article className="peli-item">
-                <h3>Desarrollo Web Película</h3>
-                <p className="description">Película tech basada en la vida de un programador peruano</p>
-
-                <button className="edit">Editar</button>
-                <button className="delete">Borrar</button>
-            </article>
-
-            <article className="peli-item">
-                <h3>Desarrollo Web Película</h3>
-                <p className="description">Película tech basada en la vida de un programador peruano</p>
-
-                <button className="edit">Editar</button>
-                <button className="delete">Borrar</button>
-            </article>
+        <section id="content" className="content">
+            {/*AQUÍ VA EL LISTADO DE PELÍCULAS*/}
+            <Listado />
         </section>
 
         {/*Barra lateral de búsqueda de pelis*/}
