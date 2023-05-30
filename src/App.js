@@ -1,3 +1,5 @@
+import { Buscador } from "./components/Buscador";
+import { Crear } from "./components/Crear";
 import { Listado } from "./components/Listado";
 
 function App() {
@@ -29,23 +31,10 @@ function App() {
 
         {/*Barra lateral de búsqueda de pelis*/}
         <aside className="lateral">
-            <div className="search">
-                <h3 className="title">Buscador</h3>
-                <form>
-                    <input type="text" />
-                    <button>Buscar</button>
-                </form>
-            </div>
+            <Buscador />
         
             {/*Agregar Películas en la barra lateral*/}
-            <div className="add">
-                <h3 className="title">Añadir Película</h3>
-                <form>
-                    <input type="text" placeholder="Titulo" />
-                    <textarea placeholder="Descripción"></textarea>
-                    <input type="submit" value="Guardar" />
-                </form>
-            </div>
+            <Crear />
         </aside>
 
         {/*FOOTER PIE DE PÁGINA*/}
