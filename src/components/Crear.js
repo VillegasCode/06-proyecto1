@@ -1,8 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 export const Crear = () => {
   
-  const titulo = "Añadir Película";
+  const tituloComponente = "Añadir Película";
+
+  //Creando hook useState para agregar las pelis en tiempo real
+  const [ peliState, setPeliState ] = useState({
+    titulo: '',
+    descripcion: ''
+  });
+
+  const { titulo, descripcion } = peliState;
 
   const conseguirDatosForm = e => {
     e.preventDefault();
@@ -19,13 +27,19 @@ export const Crear = () => {
       descripcion
     };
 
-console.log(peli);
+    setPeliState(peli);
 
   }
 
   return (
     <div className="add">
-        <h3 className="title">{titulo}</h3>
+        <h3 className="title">{tituloComponente}</h3>
+
+
+        <strong>
+          {(titulo && descripcion) && "Has creado la película: " + titulo}
+        </strong>
+
 
         <form onSubmit={conseguirDatosForm}>
             <input type="text" 
