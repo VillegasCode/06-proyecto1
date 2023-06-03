@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { GuardarEnStorage } from '../helpers/GuardarEnStorage';
 
 export const Crear = () => {
   
@@ -30,9 +31,8 @@ export const Crear = () => {
     //Guardar Estado
     setPeliState(peli);
 
-    //Guardar en el almacenamiento local con un método
-    guardarEnStorage(peli);
-
+    //Guardar en el almacenamiento local con un método que importamos de los helpers
+    GuardarEnStorage("pelis", peli);
 
   }
 
