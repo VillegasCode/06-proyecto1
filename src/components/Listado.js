@@ -1,12 +1,16 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 
 export const Listado = () => {
   
+
+    //Guardar en el estado el nuevo objeto de arrays, lo inicializamos con un array vacío
+    const [listadoState, setListadoState] = useState([]);
+
     // Método para conseguir las películas
     const conseguirPeliculas = () => {
         let peliculas = JSON.parse(localStorage.getItem("pelis"));
 
-        console.log(peliculas);
+        setListadoState(peliculas);
     }
   
     // HOOK useEffect para llamar a la función cada vez que se cargue la página, colocar corchetes vacíos al final
@@ -18,13 +22,20 @@ export const Listado = () => {
     return (
     // {/*Aqui van las películas*/}
         <>
-        <article className="peli-item">
-            <h3>Desarrollo Web Película</h3>
-            <p className="description">Película tech basada en la vida de un programador peruano</p>
+        {listadoState != null ?
+            listadoState.map(peli => {
+                return (
+                <article key={peli.id} className="peli-item">
+                    <h3>{peli.titulo}</h3>
+                    <p className="description">{peli.descripcion}</p>
 
-            <button className="edit">Editar</button>
-            <button className="delete">Borrar</button>
-        </article>
+                    <button className="edit">Editar</button>
+                    <button className="delete">Borrar</button>
+                </article>
+            );
+        })
+        : <h2>No hay películas para mostrar</h2>
+    }
         </>
     )
 }
