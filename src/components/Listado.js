@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react'
 
-export const Listado = () => {
+// Le pasamos esas 2 props desde el componente principal
+export const Listado = ({listadoState, setListadoState}) => {
   
 
     //Guardar en el estado el nuevo objeto de arrays, lo inicializamos con un array vacío
-    const [listadoState, setListadoState] = useState([]);
+    // const [listadoState, setListadoState] = useState([]);
 
     // Método para conseguir las películas
     const conseguirPeliculas = () => {
