@@ -12,6 +12,8 @@ export const Listado = ({listadoState, setListadoState}) => {
         let peliculas = JSON.parse(localStorage.getItem("pelis"));
 
         setListadoState(peliculas);
+
+        return peliculas;
     }
   
     // HOOK useEffect para llamar a la función cada vez que se cargue la página, colocar corchetes vacíos al final
@@ -20,6 +22,23 @@ export const Listado = ({listadoState, setListadoState}) => {
         conseguirPeliculas();
     }, []);
   
+
+    const borrarPeli = (id) => {
+        //Conseguir Películas alamacenadas
+        let pelis_almacenadas = conseguirPeliculas();
+
+        //Filtrar esas peliculas para que elimine del array la que tiene el id indicado y solo que llene el array con las películas que no se van a borrar
+        let nuevo_array_pelis =  pelis_almacenadas.filter(peli =>  peli.id != parseInt(id));
+
+        //Actualizar estado del listado
+        setListadoState(nuevo_array_pelis);
+
+        //Actualizar los datos en el LocalStorage
+        localStorage.setItem('pelis', JSON.stringify(nuevo_array_pelis));
+
+    }
+
+
     return (
     // {/*Aqui van las películas*/}
         <>
@@ -31,7 +50,7 @@ export const Listado = ({listadoState, setListadoState}) => {
                     <p className="description">{peli.descripcion}</p>
 
                     <button className="edit">Editar</button>
-                    <button className="delete">Borrar</button>
+                    <button className="delete" onClick={ () => borrarPeli(peli.id)}>Borrar</button>
                 </article>
             );
         })
