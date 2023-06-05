@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react'
+import { Editar } from './Editar';
 
 // Le pasamos esas 2 props desde el componente principal
-export const Listado = ({listadoState, setListadoState}) => {
-  
+export const Listado = ({listadoState, setListadoState}) => {  
 
     //Guardar en el estado el nuevo objeto de arrays, lo inicializamos con un array vacío
     // const [listadoState, setListadoState] = useState([]);
+
+
+    const [editar, setEditar] = useState(0);
 
     // Método para conseguir las películas
     const conseguirPeliculas = () => {
@@ -49,8 +52,13 @@ export const Listado = ({listadoState, setListadoState}) => {
                     <h3>{peli.titulo}</h3>
                     <p className="description">{peli.descripcion}</p>
 
-                    <button className="edit">Editar</button>
+                    <button className="edit" onClick={ () => setEditar(peli.id)}>Editar</button>
                     <button className="delete" onClick={ () => borrarPeli(peli.id)}>Borrar</button>
+
+                    {/* aparece formulario para editar película seleccionada */}
+                    {editar === peli.id && (
+                        <Editar />
+                    )}
                 </article>
             );
         })
