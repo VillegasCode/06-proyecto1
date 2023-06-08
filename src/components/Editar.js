@@ -1,22 +1,22 @@
 import React from 'react'
 
-export const Editar = () => {
+export const Editar = ({peli}) => {
   
     const titulo_componente = "Editar película";
   
     return (
     <div className='edit_form'>
-        <h3 className='title'>{titulo_componente}</h3>
+        <h3 className='title'>{titulo_componente}: {peli.titulo}</h3>
         <form>
             <input type="text"
                     name='titulo'
                     className='titulo_editado'
-                    defaultValue="Título original de la película"
+                    defaultValue={peli.titulo}
             />
 
             <textarea
                 name='descripcion'
-                defaultValue="Descripcion Original"
+                defaultValue={peli.descripcion}
                 className='descripcion_editada'
             />
 
