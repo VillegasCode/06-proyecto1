@@ -31,7 +31,7 @@ export const Listado = ({listadoState, setListadoState}) => {
         let pelis_almacenadas = conseguirPeliculas();
 
         //Filtrar esas peliculas para que elimine del array la que tiene el id indicado y solo que llene el array con las películas que no se van a borrar
-        let nuevo_array_pelis =  pelis_almacenadas.filter(peli =>  peli.id != parseInt(id));
+        let nuevo_array_pelis =  pelis_almacenadas.filter(peli =>  peli.id !== parseInt(id));
 
         //Actualizar estado del listado
         setListadoState(nuevo_array_pelis);
