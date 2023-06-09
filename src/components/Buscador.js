@@ -5,6 +5,8 @@ export const Buscador = ({listadoState, setListadoState}) => {
 
 const [busqueda, setBusqueda] = useState('');
 
+//Crear estado Película No Encontrada
+const [noEncontrado, setNoEncontrado] = useState(false);
 
 // Crear funcion buscarPeli
 const buscarPeli = (e) => {
@@ -20,19 +22,16 @@ const buscarPeli = (e) => {
   });
 
   //Si el término de búsqueda es menor o igual a 1 caracter
-  if(busqueda.length <= 1){
+  //Comprobar si hay un resultado
+  if(busqueda.length <= 1 || pelis_encontradas <= 0){
     pelis_encontradas =  JSON.parse(localStorage.getItem("pelis"));
+    setNoEncontrado(true);
+  } else {
+    setNoEncontrado(false);
   }
 
-  console.log(pelis_encontradas);
-  //Comprobar si hay un resultado
-
-
-  //Dar valor de todo en localStorage
-
-
   //Actualizar estado del listado principal con lo que logrado filtrar
-
+  setListadoState(pelis_encontradas);
 
 }
 
@@ -40,6 +39,11 @@ const buscarPeli = (e) => {
   return (
     <div className="search">
         <h3 className="title">Buscador: {busqueda}</h3>
+        
+        {(noEncontrado == true && busqueda.length > 1) && (
+          <span className='no-encontrado'>No se ha encontrado ninguna coincidencia</span>
+        )}
+        
         <form>
             <input type="text"
                     id="search_field"
