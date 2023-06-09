@@ -149,7 +149,7 @@ input[type="button"]{
   background-color: #9b0202;
 }
 
-/*Eastilos barra lateral*/
+/*Estilos barra lateral*/
 .lateral {
   grid-area: lateral;
   border-left: 1px solid #ddd;
@@ -184,6 +184,10 @@ input[type="button"]{
   border-color: transparent;
 }
 
+.no-encontrado {
+  color: #9b0202;
+}
+
 /*ESTILOS PARA EL PIE DE PÁGINA*/
 .footer {
   grid-area: footer;
@@ -211,4 +215,5 @@ input[type="button"]{
   .peli-item {
       width: 80%;
   }
+
 }
